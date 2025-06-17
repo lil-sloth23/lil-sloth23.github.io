@@ -1,0 +1,96 @@
+1. Objective
+To develop a minimum viable product (MVP) of an educational game that delivers progressive, curriculum-aligned challenges in Maths, Biology, Chemistry, and Physics for UK students aged 11–18. The game presents questions in a map-based journey where each level grows in difficulty and is structured by school year (Year 8–13), aligned to AQA specifications.
+
+2. Goals
+Goal	Description
+Curriculum-Aligned	Ensure all content is based on the AQA syllabus for GCSE and A-Level.
+Progressive Difficulty	Each topic node includes 3 questions (easy, medium, challenge) that increase in difficulty.
+Map-Based UI (Visual Concept)	Visualize topics as nodes on an educational map to aid student motivation and progress tracking.
+No-Code Compatible	Leverage tools like Cursor and optionally integrate into a no-code engine like Construct 3 or GDevelop.
+Expandable Framework	Allow easy extension with more subjects, years, and topics.
+
+3. Target Users
+Segment	Description
+Students (11–18)	UK school students in Years 8–13 studying for GCSEs or A-Levels.
+Parents	Supporting children with study reinforcement tools.
+Teachers	Looking for homework, revision, or in-class supplementary tools.
+
+4. Features
+4.1 Game Mechanics
+Feature	Description
+Year-based Progression	Students select their school year (Y8–13) and unlock topics based on that level.
+Subject Islands	Each subject (Maths, Bio, Chem, Physics) appears as a separate "island" on the map.
+Topic Nodes	Each node contains 3 sequential questions: easy → medium → challenge.
+Mastery System	Completing all questions correctly earns a “star” for that node.
+
+4.2 Core Logic (MVP)
+Feature	Description
+Question Generator	Dynamically generates question content based on the year level and topic.
+CLI Question Loop	MVP provides a command-line interface where users answer questions in order.
+Correctness Feedback	Immediate right/wrong feedback is given.
+Year Advancement	Users can replay a topic, or progress to next year’s content.
+
+4.3 Subject Content Scope (MVP)
+Subject	Year	Topic
+Maths	Year 10	Linear Graphs (sampled for MVP)
+
+5. User Flow (MVP CLI)
+plaintext
+Copy
+Edit
+Start →
+  Select Year (default: Year 10) →
+    Load Topic Node →
+      Q1 → Feedback →
+      Q2 → Feedback →
+      Q3 → Feedback →
+        [✔ All Correct] → “Node Mastered”
+        [✖ Missed] → Retry Prompt →
+    Choose: [Replay Node] [Next Topic] [Next Year] [Quit]
+6. Technical Requirements
+6.1 Stack
+Layer	Tool
+Logic / Backend	Python 3 (via Cursor)
+UI (MVP)	CLI (console input/output)
+Data Model	dataclass TopicNode for question bundles
+Front-End Expansion (Future)	Construct 3 / GDevelop / Godot for map-based interface
+
+6.2 Modular Design
+Generators for each topic: e.g. generator_linear_graphs(year)
+
+Easy plug-in of new subjects or years
+
+Extendable TopicNode structure
+
+7. Out of Scope (for MVP)
+User login/profiles
+
+Scoring system / rewards / leaderboard
+
+Save-state or backend database
+
+Visual game interface or animations
+
+Multiple topics per year
+
+8. Success Criteria
+Metric	Target
+Working CLI loop	Complete cycle of 3 questions with answer checking
+Dynamic Year Scaling	Questions adjust with year input (e.g., harder slope values)
+Replay & Year Progression	Users can replay or move to next year
+Question Accuracy	100% answer/solution alignment
+
+9. Future Roadmap
+Milestone	Description
+Map UI Prototype	Basic map front-end using GDevelop or Construct 3
+3 Subjects Live	Add Chemistry & Biology question generators
+Save Progress	LocalStorage or backend to track user progress
+Hint System	Toggle for hints in early levels
+Analytics	Basic CSV log for right/wrong per topic per user
+
+10. Appendices
+10.1 Sample TopicNode (Maths Y10 – Linear Graphs)
+Question	Answer
+Solve: 2x + 3 = 11	4
+y = 10x + 20. What are intercepts?	y-int = 20; x-int = -2.00
+m = 10; point = (3, 5); find c	-25
